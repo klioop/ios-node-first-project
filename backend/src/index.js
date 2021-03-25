@@ -1,6 +1,6 @@
 const { app } = require("./app")
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 app.get("", async (req, res) => {
     res.send({
