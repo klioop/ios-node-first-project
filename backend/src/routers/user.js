@@ -5,11 +5,15 @@ const User = require("../models/user")
 router.post("/users", async (req, res) => {
     try {
         const user = new User(req.body)
+        
         await user.save()
+
+        const token = await user.generateAuthToken()
 
         res.status(201).send({
             success: true,
-            user
+            user,
+            token
         })
     } catch (e) {
         res.status(400).send({
@@ -18,5 +22,15 @@ router.post("/users", async (req, res) => {
         })
     }
 })
+
+// router.post("/users/signin", async (req, res) => {
+
+//     try {
+
+//     } catch {
+
+//     }
+
+// })
 
 module.exports = router
