@@ -7,13 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WelcomeViewController: UIViewController {
+    
+    @IBOutlet weak var tempButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func didButtonTapped() {
+//        let registerVC = storyboard?.instantiateViewController(identifier:"registerVC") as! RegisterViewController
+//
+    }
+    
+    @IBAction func signInButtontapped() {
+    }
 }
 

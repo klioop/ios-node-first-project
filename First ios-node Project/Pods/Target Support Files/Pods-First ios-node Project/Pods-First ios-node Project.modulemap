@@ -1,0 +1,6 @@
+framework module Pods_First_ios_node_Project {
+  umbrella header "Pods-First ios-node Project-umbrella.h"
+
+  export *
+  module * { export * }
+}
