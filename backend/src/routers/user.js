@@ -23,14 +23,23 @@ router.post("/users", async (req, res) => {
     }
 })
 
-// router.post("/users/signin", async (req, res) => {
+router.post("/users/signin", async (req, res) => {
 
-//     try {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const token = await user.generateAuthToken()
 
-//     } catch {
+        res.send({ 
+            success: true,
+            user,
+            token })
+    } catch {
+        res.status(400).send({
+            success: false,
+            message: e.message
+        })
+    }
 
-//     }
-
-// })
+})
 
 module.exports = router
