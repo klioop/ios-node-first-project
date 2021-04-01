@@ -1,6 +1,9 @@
 const express = require("express")
 const router = new express.Router()
+
+const auth = require("../middleware/auth")
 const User = require("../models/user")
+const Post = require("../models/post")
 
 router.post("/users", async (req, res) => {
     try {
@@ -15,7 +18,7 @@ router.post("/users", async (req, res) => {
             user,
             token
         })
-    } catch (e) {
+    } catch(e) {
         res.status(400).send({
             success: false,
             error: e.message
@@ -33,13 +36,34 @@ router.post("/users/signin", async (req, res) => {
             success: true,
             user,
             token })
-    } catch {
+    } catch(e) {
         res.status(400).send({
             success: false,
             message: e.message
         })
     }
+})
 
+router.post("/users/posts", auth, async (req, res) => {
+    
+    try {
+        const post = await new Post({
+            ...req.body,
+            userId: req.user._id
+        })
+        
+        await post.save()
+
+        res.status(201).send({
+            success: true,
+            post
+        })
+    } catch(e) {
+        res.status(400).send({
+            success: false,
+            message: e.message
+        })
+    }
 })
 
 module.exports = router

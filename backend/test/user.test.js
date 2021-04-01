@@ -11,7 +11,7 @@
 
 beforeEach(setupDatabase)
 
-test("Should signUp a user", async () => {
+test("Should sign up a user", async () => {
     await request(app).post("/users")
         .send({
             email: "c@d.com",
@@ -20,3 +20,26 @@ test("Should signUp a user", async () => {
         })
         .expect(201)
 })
+
+test("Should sign in a user", async () => {
+    await request(app).post("/users/signin")
+        .send({
+            email: userOne.email,
+            password: userOne.password
+        })
+        .expect(200)
+})
+
+test("Should create a post", async () => {
+    const response = await request(app)
+    .post("/users/posts")
+    .set("Authorization", `Bearer ${userOne.authToken}`)
+    .send({
+            title: "test",
+            body: "This is a temporary body for testing"
+        })
+        .expect(201)
+
+    expect(response.body.success).toBe(true)
+})
+
