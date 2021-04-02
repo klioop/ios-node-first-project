@@ -8,14 +8,14 @@
 import UIKit
 import SwiftKeychainWrapper
 
-
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var userBrain = UserBrain()
+    let userBrain = UserBrain()
+    let httpRequest = HttpRequest()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
         let requestBody = ["name": name, "email": email, "password":password] as NSDictionary
         
         // http post request for registering
-        userBrain.postRequest(with: requestBody, completion: userBrain.registerUserClosure)
+        httpRequest.postRequest(with: K.EndPoint.userUrl, requestBody: requestBody , completion: userBrain.saveAuthToken)
     }
 }
 

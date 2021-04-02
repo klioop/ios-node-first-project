@@ -36,15 +36,5 @@ struct UserBrain {
         }
     }
     
-    public func loadPosts (res: Result<Post, Error>) -> Void {
-        
-        switch res {
-        
-        case .success(_):
-            <#code#>
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
 }
 

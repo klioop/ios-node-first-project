@@ -6,3 +6,32 @@
 //
 
 import Foundation
+
+struct K {
+    static let localhostUrl = "http://localhost:3000"
+    
+    struct EndPoint {
+        static let userUrl = "\(localhostUrl)/users"
+        static let userSignIn = "\(userUrl)/signin"
+        static let posts = "\(localhostUrl)/posts"
+        static let createPost = "\(userUrl)/posts"
+    }
+    
+    struct Segue {
+        static let registerSegue = "goToRegisterSignIn"
+        static let signInSegue = "goFromSignInToRooms"
+        static let postTableSegue = "goToCreateView"
+    }
+    
+    struct VC {
+        static let signInVC = "signinVC"
+    }
+    
+    struct Table {
+        static let postTableCellId = "postCellid"
+    }
+    
+    struct Key {
+        static let userAccessToken = "accessToken"
+    }
+}

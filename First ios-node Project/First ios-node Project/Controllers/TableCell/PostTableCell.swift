@@ -5,4 +5,11 @@
 //  Created by klioop on 2021/03/31.
 //
 
-import Foundation
+import UIKit
+
+class PostTableCell: UITableViewCell {
+    
+    @IBOutlet weak var textInput: UILabel!
+    @IBOutlet weak var bodyInput: UILabel!
+    
+}

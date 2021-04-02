@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31A74BC526132D7D0043DA3B /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74BC426132D7D0043DA3B /* HttpRequest.swift */; };
+		31A74C0C261484D60043DA3B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C0B261484D60043DA3B /* Constants.swift */; };
+		31A74C1326148FF70043DA3B /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C1226148FF70043DA3B /* PostTableViewController.swift */; };
+		31A74C162614969C0043DA3B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C152614969C0043DA3B /* UserModel.swift */; };
+		31A74C1A2614BEC70043DA3B /* PostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C192614BEC70043DA3B /* PostTableCell.swift */; };
+		31A74C1E2614C18E0043DA3B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C1D2614C18E0043DA3B /* PostModel.swift */; };
+		31A74C252615EA940043DA3B /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C242615EA940043DA3B /* PostData.swift */; };
+		31A74C292615FBB50043DA3B /* PostBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C282615FBB50043DA3B /* PostBrain.swift */; };
+		31A74C2C2616BB8B0043DA3B /* PostCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C2B2616BB8B0043DA3B /* PostCreateViewController.swift */; };
 		31EDB24C260B2DBC0058146D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EDB24B260B2DBC0058146D /* AppDelegate.swift */; };
 		31EDB24E260B2DBC0058146D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EDB24D260B2DBC0058146D /* SceneDelegate.swift */; };
 		31EDB250260B2DBC0058146D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EDB24F260B2DBC0058146D /* WelcomeViewController.swift */; };
@@ -22,6 +31,15 @@
 
 /* Begin PBXFileReference section */
 		0CDA24B8182F7277B1CA4730 /* Pods-First ios-node Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-First ios-node Project.debug.xcconfig"; path = "Target Support Files/Pods-First ios-node Project/Pods-First ios-node Project.debug.xcconfig"; sourceTree = "<group>"; };
+		31A74BC426132D7D0043DA3B /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		31A74C0B261484D60043DA3B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		31A74C1226148FF70043DA3B /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
+		31A74C152614969C0043DA3B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		31A74C192614BEC70043DA3B /* PostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableCell.swift; sourceTree = "<group>"; };
+		31A74C1D2614C18E0043DA3B /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		31A74C242615EA940043DA3B /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		31A74C282615FBB50043DA3B /* PostBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBrain.swift; sourceTree = "<group>"; };
+		31A74C2B2616BB8B0043DA3B /* PostCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateViewController.swift; sourceTree = "<group>"; };
 		31EDB248260B2DBC0058146D /* First ios-node Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "First ios-node Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EDB24B260B2DBC0058146D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31EDB24D260B2DBC0058146D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +77,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		31A74C0A261484C80043DA3B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				31A74C0B261484D60043DA3B /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		31A74C182614BE9F0043DA3B /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				31A74C192614BEC70043DA3B /* PostTableCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		31A74C202615EA6E0043DA3B /* user */ = {
+			isa = PBXGroup;
+			children = (
+				31EDB273260CA5C00058146D /* UserData.swift */,
+				31EDB276260CB2A40058146D /* UserBrain.swift */,
+				31A74C152614969C0043DA3B /* UserModel.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		31A74C222615EA7F0043DA3B /* post */ = {
+			isa = PBXGroup;
+			children = (
+				31A74C1D2614C18E0043DA3B /* PostModel.swift */,
+				31A74C242615EA940043DA3B /* PostData.swift */,
+				31A74C282615FBB50043DA3B /* PostBrain.swift */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
 		31EDB23F260B2DBC0058146D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +134,7 @@
 		31EDB24A260B2DBC0058146D /* First ios-node Project */ = {
 			isa = PBXGroup;
 			children = (
+				31A74C0A261484C80043DA3B /* Utils */,
 				31EDB24B260B2DBC0058146D /* AppDelegate.swift */,
 				31EDB24D260B2DBC0058146D /* SceneDelegate.swift */,
 				31EDB262260C68F90058146D /* Models */,
@@ -95,9 +150,12 @@
 		31EDB260260C68D30058146D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				31A74C182614BE9F0043DA3B /* TableCell */,
 				31EDB24F260B2DBC0058146D /* WelcomeViewController.swift */,
 				31EDB26D260C76620058146D /* RegisterViewController.swift */,
 				31EDB270260C7C790058146D /* SignInViewController.swift */,
+				31A74C1226148FF70043DA3B /* PostTableViewController.swift */,
+				31A74C2B2616BB8B0043DA3B /* PostCreateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -113,8 +171,9 @@
 		31EDB262260C68F90058146D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				31EDB273260CA5C00058146D /* UserData.swift */,
-				31EDB276260CB2A40058146D /* UserBrain.swift */,
+				31A74C202615EA6E0043DA3B /* user */,
+				31A74BC426132D7D0043DA3B /* HttpRequest.swift */,
+				31A74C222615EA7F0043DA3B /* post */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,13 +300,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A74C1326148FF70043DA3B /* PostTableViewController.swift in Sources */,
 				31EDB277260CB2A40058146D /* UserBrain.swift in Sources */,
+				31A74C2C2616BB8B0043DA3B /* PostCreateViewController.swift in Sources */,
 				31EDB250260B2DBC0058146D /* WelcomeViewController.swift in Sources */,
 				31EDB24C260B2DBC0058146D /* AppDelegate.swift in Sources */,
+				31A74C1E2614C18E0043DA3B /* PostModel.swift in Sources */,
+				31A74C252615EA940043DA3B /* PostData.swift in Sources */,
+				31A74C1A2614BEC70043DA3B /* PostTableCell.swift in Sources */,
 				31EDB24E260B2DBC0058146D /* SceneDelegate.swift in Sources */,
 				31EDB271260C7C790058146D /* SignInViewController.swift in Sources */,
+				31A74BC526132D7D0043DA3B /* HttpRequest.swift in Sources */,
 				31EDB274260CA5C00058146D /* UserData.swift in Sources */,
 				31EDB26E260C76620058146D /* RegisterViewController.swift in Sources */,
+				31A74C292615FBB50043DA3B /* PostBrain.swift in Sources */,
+				31A74C0C261484D60043DA3B /* Constants.swift in Sources */,
+				31A74C162614969C0043DA3B /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
