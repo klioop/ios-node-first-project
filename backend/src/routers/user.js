@@ -45,6 +45,9 @@ router.post("/users/signin", async (req, res) => {
 })
 
 router.post("/users/posts", auth, async (req, res) => {
+
+    console.log(req.headers);
+    console.log(req.body);
     
     try {
         const post = await new Post({
