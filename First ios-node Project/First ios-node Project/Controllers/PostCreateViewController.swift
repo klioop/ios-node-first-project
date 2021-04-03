@@ -15,7 +15,6 @@ class PostCreateViewController: UIViewController {
     
     var httpRequest = HttpRequest()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

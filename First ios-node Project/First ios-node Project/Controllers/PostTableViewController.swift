@@ -13,13 +13,15 @@ class PostTableViewController: UIViewController {
     
     var postBrain = PostBrain()
     var httpRequest = HttpRequest()
-    var pageParameter = ["page": 0] as NSDictionary
+    
+    var pageParameter = ["page": 0] as NSMutableDictionary
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ListOfRoomViewController - viewDidLoad() called")
         
         tableView.dataSource = self
+        tableView.delegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewPost))
         
@@ -28,7 +30,13 @@ class PostTableViewController: UIViewController {
         DispatchQueue.main.async() {
             self.tableView.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear() called")
         
+        refreshHandler()
     }
     
     // MARK: - Selector methods
@@ -36,6 +44,22 @@ class PostTableViewController: UIViewController {
         print("createNewPost() called")
         performSegue(withIdentifier: K.Segue.postTableSegue, sender: self)
     }
+    
+    fileprivate func refreshHandler() {
+        postBrain.posts?.removeAll()
+        print("refreshHandler - \((postBrain.posts?.count)!)")
+        
+        tableView.reloadData()
+        
+        let refreshParameter = ["page": 0] as NSMutableDictionary
+
+//        httpRequest.postRequest(with: K.EndPoint.posts, requestBody: refreshParameter, completion: postBrain.loadPosts)
+//
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+    }
+
 }
 
 
@@ -53,8 +77,18 @@ extension PostTableViewController: UITableViewDataSource {
         cell.textInput.text = postBrain.posts?[indexPath.row].title
         cell.bodyInput.text = postBrain.posts?[indexPath.row].body
         
+        if indexPath.row == (postBrain.posts?.count)! - 1 {
+            pageParameter["page"] = pageParameter["page"] as! Int + 1
+            print(pageParameter["page"]!)
+        }
+        
+        
         return cell
     }
-    
 }
+
+extension PostTableViewController: UITableViewDelegate {
+
+}
+
 

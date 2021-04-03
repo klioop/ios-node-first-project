@@ -27,7 +27,7 @@ class SignInViewController: UIViewController {
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
-        let requestBody = ["email": email, "password": password] as NSDictionary
+        let requestBody = ["email": email, "password": password] as NSMutableDictionary
         
         userBrain.delegate = self
         

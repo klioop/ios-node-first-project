@@ -344,15 +344,15 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCellid" rowHeight="278" id="uNC-zY-xiF" customClass="PostTableCell" customModule="First_ios_node_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="278"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCellid" rowHeight="158" id="uNC-zY-xiF" customClass="PostTableCell" customModule="First_ios_node_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uNC-zY-xiF" id="gyo-kd-eam">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vXh-G1-cQX">
-                                                    <rect key="frame" x="0.0" y="10" width="414" height="258"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="vXh-G1-cQX">
+                                                    <rect key="frame" x="0.0" y="10" width="414" height="138"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQY-IU-mO4">
                                                             <rect key="frame" x="169" y="0.0" width="76" height="30"/>
@@ -363,8 +363,8 @@
                                                             <color key="textColor" systemColor="tertiarySystemBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PxC-zC-6Qy">
-                                                            <rect key="frame" x="12.5" y="35" width="389.5" height="223"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxC-zC-6Qy">
+                                                            <rect key="frame" x="4" y="33" width="406" height="105"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <string key="text">Random Text it is Random Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it isRandom Text it is</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -474,7 +474,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="I4O-7Y-2N1"/>
+        <segue reference="t3u-Ih-xUo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="textField" width="298" height="93"/>

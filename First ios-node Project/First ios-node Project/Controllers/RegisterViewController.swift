@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController {
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
-        let requestBody = ["name": name, "email": email, "password":password] as NSDictionary
+        let requestBody = ["name": name, "email": email, "password":password] as NSMutableDictionary
         
         // http post request for registering
         httpRequest.postRequest(with: K.EndPoint.userUrl, requestBody: requestBody , completion: userBrain.saveAuthToken)

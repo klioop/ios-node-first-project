@@ -9,7 +9,7 @@ import Foundation
 
 class PostBrain {
     
-    var posts: [PostModel]?
+    var posts: [PostModel]? = []
     
     public func loadPosts (res: Result<PostData, Error>) -> Void {
         
@@ -18,13 +18,12 @@ class PostBrain {
         case .success(let postData):
             
             let postObjs = postData.posts
-            var postModels = [PostModel]()
             
             postObjs.forEach {
-                postModels.append(PostModel(id: $0.id, title: $0.title ?? "", body: $0.body ?? ""))
+                self.posts?.append(PostModel(id: $0.id, title: $0.title ?? "", body: $0.body ?? ""))
             }
             
-            self.posts = postModels
+            print((posts?.count)!)
             
         case .failure(let error):
             print(error.localizedDescription)

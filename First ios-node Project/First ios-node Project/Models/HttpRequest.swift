@@ -11,7 +11,7 @@ import SwiftKeychainWrapper
 struct HttpRequest {
     
     
-    public func postRequest<T: Decodable> (with url: String, requestBody: NSDictionary, completion: @escaping ((Result<T, Error>) -> Void)) {
+    public func postRequest<T: Decodable> (with url: String, requestBody: NSMutableDictionary, completion: @escaping ((Result<T, Error>) -> Void)) {
         guard let url = URL(string: "\(url)") else { return }
         
         var urlRequest = URLRequest(url: url)
@@ -41,8 +41,8 @@ struct HttpRequest {
             
             guard let data = data else { return }
             
-            let tempBody = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
-            print(tempBody)
+//            let tempBody = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
+//            print(tempBody)
             
             do {
                 let responseBody = try JSONDecoder().decode(T.self, from: data)
