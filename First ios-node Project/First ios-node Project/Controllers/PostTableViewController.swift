@@ -14,6 +14,7 @@ class PostTableViewController: UIViewController {
     var postBrain = PostBrain()
     var httpRequest = HttpRequest()
     
+    var pageNumber : Int = 0
     var pageParameter = ["page": 0] as NSMutableDictionary
     
     override func viewDidLoad() {
@@ -22,6 +23,8 @@ class PostTableViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        postBrain.delegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewPost))
         
@@ -46,20 +49,18 @@ class PostTableViewController: UIViewController {
     }
     
     fileprivate func refreshHandler() {
-        postBrain.posts?.removeAll()
-        print("refreshHandler - \((postBrain.posts?.count)!)")
+        print("rerefreshHandler() called")
         
-        tableView.reloadData()
-        
-        let refreshParameter = ["page": 0] as NSMutableDictionary
-
-//        httpRequest.postRequest(with: K.EndPoint.posts, requestBody: refreshParameter, completion: postBrain.loadPosts)
-//
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
+        DispatchQueue.main.async() {
+            self.postBrain.posts?.removeAll()
+            self.pageNumber = 0
+            print("refreshHandler - \((self.postBrain.posts?.count)!)")
+            
+            let refreshParameter = ["page": self.pageNumber] as NSMutableDictionary
+            
+            self.httpRequest.postRequest(with: K.EndPoint.posts, requestBody: refreshParameter, completion: self.postBrain.loadPosts)
+        }
     }
-
 }
 
 
@@ -77,18 +78,30 @@ extension PostTableViewController: UITableViewDataSource {
         cell.textInput.text = postBrain.posts?[indexPath.row].title
         cell.bodyInput.text = postBrain.posts?[indexPath.row].body
         
-        if indexPath.row == (postBrain.posts?.count)! - 1 {
-            pageParameter["page"] = pageParameter["page"] as! Int + 1
-            print(pageParameter["page"]!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if indexPath.row == (self.postBrain.posts?.count)! - 1 {
+                print("pageNumber ---- \(self.pageNumber)")
+                self.pageNumber += 1
+                let param = ["page": self.pageNumber] as NSMutableDictionary
+                self.httpRequest.postRequest(with: K.EndPoint.posts, requestBody: param, completion: self.postBrain.loadPosts)
+            }
         }
-        
         
         return cell
     }
 }
 
 extension PostTableViewController: UITableViewDelegate {
-
+    
 }
 
+
+extension PostTableViewController: PostBrainDelegate {
+    
+    func tableViewReload() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
 
