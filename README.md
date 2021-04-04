@@ -7,7 +7,7 @@ This is my first ios project not follwoing tutorial.
 My goal is to build a MVP blog ios app with backend with nodeJS.<br>
 It is for showcasing my swift skill and backend understanding to land a first ios developer job.
 
-## Function
+## Functions
 
 1. Sign up
 2. Sign in
