@@ -14,7 +14,10 @@ const userOne = {
     password: "1234",
 }
 
+const postOneId = new mongoose.Types.ObjectId()
+
 const postOne = {
+    _id: postOneId,
     userId: userOneId,
     title: "post for test",
     body: "This is a body of this posting"
@@ -32,6 +35,7 @@ for (let i = 0; i < 30; i ++) {
 const setupDatabase = async () => {
     await User.deleteMany()
     await Post.deleteMany()
+    await new Post(postOne).save()
     await new User(userOne).save()
     posts.forEach( async (el) => {
         await new Post(el).save()
@@ -41,5 +45,7 @@ const setupDatabase = async () => {
 module.exports = {
     userOneId,
     userOne,
+    postOneId,
+    postOne,
     setupDatabase
 }

@@ -46,8 +46,6 @@ router.post("/users/signin", async (req, res) => {
 
 router.post("/users/posts", auth, async (req, res) => {
 
-    console.log(req.headers);
-    console.log(req.body);
     
     try {
         const post = await new Post({
@@ -61,6 +59,46 @@ router.post("/users/posts", auth, async (req, res) => {
             success: true,
             post
         })
+    } catch(e) {
+        res.status(400).send({
+            success: false,
+            message: e.message
+        })
+    }
+})
+
+router.post("/users/posts/:id", auth, async(req, res) => {
+    console.log(req.params);
+    console.log(req.body);
+
+    try{
+        const post = await Post.findOneAndUpdate(
+            { _id: req.params.id },
+            { title: req.body.title, body: req.body.body },
+            { new: true }
+             )
+        
+        res.send({
+            success: true,
+            post
+        })
+    } catch(e) {
+        res.status(400).send({
+            success: false,
+            message: e.message
+        })
+    }
+})
+
+router.delete("/users/posts/:id", auth, async (req, res) => {
+    try {
+    const post = await Post.findOneAndDelete({ _id: req.params.id })
+
+    res.send({
+        success: true,
+        message: "Successfully deleted!",
+        post
+    })
     } catch(e) {
         res.status(400).send({
             success: false,
