@@ -10,7 +10,6 @@ import SwiftKeychainWrapper
 
 struct HttpRequest {
     
-    
     public func postRequest<T: Decodable> (with url: String, requestBody: NSMutableDictionary, completion: @escaping ((Result<T, Error>) -> Void)) {
         guard let url = URL(string: "\(url)") else { return }
         

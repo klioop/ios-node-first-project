@@ -18,6 +18,8 @@ class PostCreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bodyInput.layer.cornerRadius = bodyInput.frame.size.width / 25
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addPost))
         
     }
@@ -27,6 +29,7 @@ class PostCreateViewController: UIViewController {
         
         let title = titleInput.text ?? "#NO TITLE"
         let body = bodyInput.text ?? ""
+        
         
         let parameters = [ "title": title, "body": body ] as NSDictionary
         
