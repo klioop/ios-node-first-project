@@ -11,12 +11,12 @@ This is my first ios project not follwoing tutorial.
 
 ## MVP
 
-My goal is to build a MVP blog ios app with backend with nodeJS.<br>
+The project is for building a MVP blog ios app with backend with nodeJS.<br>
 It is for showcasing my swift skill and backend understanding to land a first ios developer job.
 
 간단한 블로그 MVP 어플을 만들어 보았습니다. Backend 는 nodejs 로 구현했습니다. 이 프로젝트는 ios junior 개발자로써제가 가지고 있는  swift 스킬과 backend 이해를 보여주는 것입니다. 
 
-##Overall Functions (기본 기능들)
+## Overall Functions (기본 기능들)
 
 1. Sign up (회원가입)
 2. Sign in (로그인)
@@ -26,7 +26,7 @@ It is for showcasing my swift skill and backend understanding to land a first io
 6. Delete a post (포스트 삭제하기)
 
 
-##Details (구현한 기능에 관한 구체적 설명)
+## Details (구현한 기능에 관한 구체적 설명)
 
 1. Users who only are signed up can write, read, update and delete posts.
 2. To authenticate a users, after a user signs in, he or she is going to be given a access token, json web token, by the server.
