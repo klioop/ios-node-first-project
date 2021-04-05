@@ -85,6 +85,4 @@ extension PostDetailViewController: PostEditViewControllerDelegate {
             self.bodyOfSelectedPost.text = postItem.body
         }
     }
-    
-    
 }

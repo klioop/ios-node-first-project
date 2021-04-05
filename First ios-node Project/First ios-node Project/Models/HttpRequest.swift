@@ -39,10 +39,7 @@ struct HttpRequest {
             }
             
             guard let data = data else { return }
-            
-//            let tempBody = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
-//            print(tempBody)
-            
+ 
             do {
                 let responseBody = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(responseBody))
@@ -88,7 +85,11 @@ struct HttpRequest {
             
             do {
                 let responseBody = try JSONDecoder().decode(T.self, from: data)
+                
+              
                 completion(.success(responseBody))
+                
+                
             } catch {
                 completion(.failure(error))
             }

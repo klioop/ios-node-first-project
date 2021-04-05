@@ -14,7 +14,6 @@
 		31A74C1A2614BEC70043DA3B /* PostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C192614BEC70043DA3B /* PostTableCell.swift */; };
 		31A74C1E2614C18E0043DA3B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C1D2614C18E0043DA3B /* PostModel.swift */; };
 		31A74C252615EA940043DA3B /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C242615EA940043DA3B /* PostData.swift */; };
-		31A74C292615FBB50043DA3B /* PostBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C282615FBB50043DA3B /* PostBrain.swift */; };
 		31A74C2C2616BB8B0043DA3B /* PostCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C2B2616BB8B0043DA3B /* PostCreateViewController.swift */; };
 		31A74C2F2619845C0043DA3B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C2E2619845C0043DA3B /* PostDetailViewController.swift */; };
 		31A74C3226199C9C0043DA3B /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A74C3126199C9C0043DA3B /* PostEditViewController.swift */; };
@@ -40,7 +39,6 @@
 		31A74C192614BEC70043DA3B /* PostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableCell.swift; sourceTree = "<group>"; };
 		31A74C1D2614C18E0043DA3B /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		31A74C242615EA940043DA3B /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
-		31A74C282615FBB50043DA3B /* PostBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBrain.swift; sourceTree = "<group>"; };
 		31A74C2B2616BB8B0043DA3B /* PostCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateViewController.swift; sourceTree = "<group>"; };
 		31A74C2E2619845C0043DA3B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		31A74C3126199C9C0043DA3B /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 			children = (
 				31A74C1D2614C18E0043DA3B /* PostModel.swift */,
 				31A74C242615EA940043DA3B /* PostData.swift */,
-				31A74C282615FBB50043DA3B /* PostBrain.swift */,
 			);
 			path = post;
 			sourceTree = "<group>";
@@ -321,7 +318,6 @@
 				31A74BC526132D7D0043DA3B /* HttpRequest.swift in Sources */,
 				31EDB274260CA5C00058146D /* UserData.swift in Sources */,
 				31EDB26E260C76620058146D /* RegisterViewController.swift in Sources */,
-				31A74C292615FBB50043DA3B /* PostBrain.swift in Sources */,
 				31A74C0C261484D60043DA3B /* Constants.swift in Sources */,
 				31A74C162614969C0043DA3B /* UserModel.swift in Sources */,
 			);

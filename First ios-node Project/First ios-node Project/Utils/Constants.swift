@@ -18,7 +18,7 @@ struct K {
     }
     
     struct Segue {
-        static let registerSegue = "goToRegisterSignIn"
+        static let registerSegue = "goToSignIn"
         static let signInSegue = "goFromSignInToRooms"
         static let postTableSegue = "goToCreateView"
         static let postTableSegue2 = "goToDetailVC"
