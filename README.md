@@ -39,14 +39,14 @@ It is for showcasing my swift skill and backend understanding to land a first io
 4. 서버는 요청을 확인하고 유저가 해당 요청의 권한을 가지고 있는지 확인한다. 그리고 권한여부에 따라 대응값을 보내준다.
 
 
-###[ios]
+### [ios]
 1. Http post request not using library such as Almorfire. I am also able to do it with Almorfire. 
 2. I try to follow MVC pattern for organizing overall code, but not strictly.
 3. Delegate pattern is used to transer data between view controllers.
 4. Storyboard is used for layout.
 5. I try to keep retain cycle from taking place.
 
-###[backend]
+### [backend]
 1. Endpoints are made.
 2. Basic unit tests are executed.
 3. To authenticate a user, the way of using middle ware is used.
