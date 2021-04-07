@@ -23,9 +23,11 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameContainer.layer.cornerRadius = nameContainer.frame.size.width / 20
-        passwordContainer.layer.cornerRadius = passwordContainer.frame.size.width / 20
-        emailContainer.layer.cornerRadius = emailContainer.frame.size.width / 20
+        nameContainer.layer.cornerRadius = nameContainer.frame.size.width / 30
+        nameContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        passwordContainer.layer.cornerRadius = passwordContainer.frame.size.width / 30
+        passwordContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
     }
     
@@ -35,6 +37,10 @@ class RegisterViewController: UIViewController {
         nameTextField.text = ""
         emailTextField.text = ""
         passwordTextField.text = ""
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     @IBAction func registerButton(_ sender: UIButton) {

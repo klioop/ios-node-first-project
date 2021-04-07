@@ -70,7 +70,6 @@ class PostTableViewController: UIViewController {
                 self?.tableView.reloadData()
             }
             
-            
         case .failure(let error):
             print(error.localizedDescription)
         }
@@ -96,7 +95,6 @@ extension PostTableViewController: UITableViewDataSource {
         
         return cell
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

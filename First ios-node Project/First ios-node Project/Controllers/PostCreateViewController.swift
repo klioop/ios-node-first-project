@@ -18,7 +18,7 @@ class PostCreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bodyInput.layer.cornerRadius = bodyInput.frame.size.width / 25
+        bodyInput.layer.cornerRadius = bodyInput.frame.size.width / 30
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addPost))
         
