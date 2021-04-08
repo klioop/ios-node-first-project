@@ -91,25 +91,20 @@ class HttpRequest {
             do {
                 let responseBody = try JSONDecoder().decode(PostData.self, from: data)
                 let fetchedPosts = responseBody.posts
-                
-                if fetchedPosts.count == 0 {
-                    return
-                }
-                
+                                
                 completion(.success(fetchedPosts))
                 
                 if pagination {
-                    self.currentPage += 1
                     self.isPaginating = false
+                    self.currentPage += 1
                 }
-                
+
             } catch {
                 completion(.failure(error))
             }
         }.resume()
         
     }
-    
     
     public func postRequestWithToken<T: Decodable> (with url: String, requestBody: NSDictionary, completion: @escaping ((Result<T, Error>) -> Void)) {
         guard let url = URL(string: "\(url)") else { return }
@@ -147,9 +142,7 @@ class HttpRequest {
             do {
                 let responseBody = try JSONDecoder().decode(T.self, from: data)
                 
-              
                 completion(.success(responseBody))
-                
                 
             } catch {
                 completion(.failure(error))

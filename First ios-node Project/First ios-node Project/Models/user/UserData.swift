@@ -9,8 +9,10 @@ import Foundation
 
 struct UserData: Decodable {
     
+    let success: Bool
     let user: User
     let token: String
+    let error: String?
 }
 
 struct User: Decodable {

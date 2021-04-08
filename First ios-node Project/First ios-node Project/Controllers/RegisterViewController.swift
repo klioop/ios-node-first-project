@@ -51,9 +51,25 @@ class RegisterViewController: UIViewController {
         let requestBody = ["name": name, "email": email, "password":password] as NSMutableDictionary
         
         // http post request for registering
-        httpRequest.postRequest(with: K.EndPoint.userUrl, requestBody: requestBody, completion: userBrain.saveAuthToken)
+        httpRequest.postRequest(with: K.EndPoint.userUrl, requestBody: requestBody) { (result: Result<UserData, Error>) in
+            switch result{
+            case .success(let fetchedData):
+                if fetchedData.success == false {
+                    print(fetchedData.error ?? "Failed to Register")
+                    return
+                }
+                print("Successfully registered!")
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.performSegue(withIdentifier: K.Segue.registerSegue, sender: self)
+                }
+                
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         
-        performSegue(withIdentifier: K.Segue.registerSegue, sender: self)
     }
 }
 

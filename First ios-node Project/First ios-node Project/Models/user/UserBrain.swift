@@ -24,6 +24,11 @@ struct UserBrain {
             print(error.localizedDescription)
             
         case .success(let userData):
+            if userData.success == false {
+                print(userData.error ?? "")
+                return
+            }
+            
             let userInfo = userData.user
             
             // 로그인하고 받은 jwt 을 keyChain 에 저장... struct 파일에 저장하면 외부에서 접근이 가능해질까?

@@ -14,14 +14,18 @@ class PostTableViewController: UIViewController {
     var httpRequest = HttpRequest()
     var posts = [Post]()
     
-    var pageNumber : Int = 0
-    
+    var isFetching : Bool = false
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         print("PostTableViewController - viewDidLoad() called")
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.tintColor = .yellow
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewPost))
         
@@ -34,10 +38,10 @@ class PostTableViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
         }
     }
     
@@ -50,16 +54,7 @@ class PostTableViewController: UIViewController {
         }
     }
     
-    private func createFooterView() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100 ))
-        let spinner = UIActivityIndicatorView()
-        spinner.center = footerView.center
-        spinner.color = .yellow
-        footerView.addSubview(spinner)
-        spinner.startAnimating()
-        
-        return footerView
-    }
+    
     
     
     // MARK: - Selector methods
@@ -70,8 +65,32 @@ class PostTableViewController: UIViewController {
         performSegue(withIdentifier: K.Segue.postTableSegue, sender: self)
     }
     
-    fileprivate func refreshHandler() {
+    @objc func refreshData() {
+        print("refreshData() - called")
+        refreshHandler(refresh: true)
+    }
+    
+    // MARK: - fileprivate methods
+    
+    fileprivate func createFooterView() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100 ))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        spinner.color = .yellow
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        
+        return footerView
+    }
+    
+    fileprivate func refreshHandler(refresh: Bool = false) {
         print("rerefreshHandler() called")
+        
+        if refresh {
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.refreshControl?.beginRefreshing()
+            }
+        }
         
         posts.removeAll()
         httpRequest.currentPage = 1
@@ -85,6 +104,9 @@ class PostTableViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self?.tableView.reloadData()
                     self?.httpRequest.isPaginating = false
+                    if refresh {
+                        self?.tableView.refreshControl?.endRefreshing()
+                    }
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -132,14 +154,17 @@ extension PostTableViewController: UITableViewDelegate {
         
         performSegue(withIdentifier: K.Segue.postTableSegue2, sender: nil)
     }
-    
 }
+
+// MARK: - UIScrollViewDelegate methods
 
 extension PostTableViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         
-        if position > tableView.contentSize.height - scrollView.frame.size.height + 50 {
+        if (position + scrollView.frame.size.height > tableView.contentSize.height && !isFetching ){
+            
+            isFetching = true
             guard !httpRequest.isPaginating else { return }
             
             tableView.tableFooterView = createFooterView()
@@ -157,8 +182,8 @@ extension PostTableViewController: UIScrollViewDelegate {
                         
                         DispatchQueue.main.async {
                             self?.tableView.reloadData()
+                            self?.isFetching = false
                         }
-                        
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
