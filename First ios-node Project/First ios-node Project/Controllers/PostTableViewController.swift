@@ -12,7 +12,7 @@ class PostTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var httpRequest = HttpRequest()
-    var posts = [PostModel]()
+    var posts = [Post]()
     
     var pageNumber : Int = 0
     
@@ -25,16 +25,39 @@ class PostTableViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewPost))
         
-        httpRequest.postRequest(with: K.EndPoint.posts, requestBody: ["page": pageNumber] as NSMutableDictionary, completion: loadPosts)
+        httpRequest.postRequestWithPagination(with: K.EndPoint.posts, pagination: false) { [weak self] result in
+            
+            switch result {
+            case .success(let fetchedPosts):
+                self?.posts.append(contentsOf: fetchedPosts)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear() called")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.refreshHandler()
         }
+    }
+    
+    private func createFooterView() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100 ))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        spinner.color = .yellow
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        
+        return footerView
     }
     
     
@@ -49,32 +72,25 @@ class PostTableViewController: UIViewController {
         print("rerefreshHandler() called")
         
         posts.removeAll()
+        httpRequest.currentPage = 1
         
-        let refreshParameter = ["page": pageNumber] as NSMutableDictionary
-        httpRequest.postRequest(with: K.EndPoint.posts, requestBody: refreshParameter, completion: (loadPosts))
+        httpRequest.postRequestWithPagination(with: K.EndPoint.posts, pagination: false) { [weak self] result in
+            
+            switch result {
+            case .success(let fetchedPosts):
+                self?.posts.append(contentsOf: fetchedPosts)
+                print("rerefreshHandler() -- count : ", self?.posts.count ?? 0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self?.tableView.reloadData()
+                    self?.httpRequest.isPaginating = false
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         
         print("refreshHandler - \((posts.count))")
     }
-    
-    fileprivate func loadPosts (res: Result<PostData, Error>) -> Void {
-        
-        switch res {
-        case .success(let postData):
-            let postObjs = postData.posts
-            
-            for obj in postObjs {
-                posts.append(PostModel(id: obj.id, title: obj.title ?? "" , body: obj.body ?? ""))
-            }
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
-            }
-            
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
-    
 }
 
 
@@ -101,7 +117,7 @@ extension PostTableViewController: UITableViewDataSource {
         if let vc = segue.destination as? PostDetailViewController {
             vc.post = posts[(tableView.indexPathForSelectedRow?.row)!]
         }
-            
+        
     }
 }
 
@@ -115,5 +131,40 @@ extension PostTableViewController: UITableViewDelegate {
         performSegue(withIdentifier: K.Segue.postTableSegue2, sender: nil)
     }
     
+}
+
+extension PostTableViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        print(position)
+        
+        if position > tableView.contentSize.height - scrollView.frame.size.height + 50 {
+            guard !httpRequest.isPaginating else { return }
+            
+            tableView.tableFooterView = createFooterView()
+            
+            httpRequest.postRequestWithPagination(with: K.EndPoint.posts, pagination: true) { [weak self] result in
+                print("currentPage : ", self?.httpRequest.currentPage ?? 0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    
+                    DispatchQueue.main.async {
+                        self?.tableView.tableFooterView = nil
+                    }
+                    
+                    switch result {
+                    case .success(let fetchedData):
+                        self?.posts.append(contentsOf: fetchedData)
+                        print("postRequestWithPagination() -- count : ", self?.posts.count ?? 0)
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                        }
+                        
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
 }
 

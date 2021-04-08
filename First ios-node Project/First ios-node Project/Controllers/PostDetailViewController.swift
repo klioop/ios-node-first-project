@@ -14,7 +14,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var bodyOfSelectedPost: UITextView!
     @IBOutlet weak var deleteButton: UIButton!
     
-    var post: PostModel?
+    var post: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,7 @@ class PostDetailViewController: UIViewController {
 // MARK: - PostEditViewControllerDelegate methods
 
 extension PostDetailViewController: PostEditViewControllerDelegate {
-    func editPostCompleted(postItem: PostModel) {
+    func editPostCompleted(postItem: Post) {
         DispatchQueue.main.async {
             self.titleOfSelectedPost.text = postItem.title
             self.bodyOfSelectedPost.text = postItem.body

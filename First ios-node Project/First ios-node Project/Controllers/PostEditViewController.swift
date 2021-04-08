@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PostEditViewControllerDelegate: AnyObject {
-    func editPostCompleted(postItem: PostModel)
+    func editPostCompleted(postItem: Post)
 }
 
 class PostEditViewController: UIViewController {
@@ -16,7 +16,7 @@ class PostEditViewController: UIViewController {
     @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var bodyIntput: UITextView!
     
-    var receviedPost: PostModel?
+    var receviedPost: Post?
     var httpRequest = HttpRequest()
     
     weak var delegate: PostEditViewControllerDelegate?
@@ -50,7 +50,7 @@ class PostEditViewController: UIViewController {
         switch res {
         
         case .success(let postDatum):
-            let temp = PostModel(id: postDatum.post.id, title: postDatum.post.title ?? "", body: postDatum.post.body ?? "")
+            let temp = postDatum.post
             
             self.receviedPost? = temp
             self.delegate?.editPostCompleted(postItem: temp)
