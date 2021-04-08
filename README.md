@@ -14,14 +14,15 @@ This is my first ios project not follwoing tutorial.
 The project is for building a MVP blog ios app with backend with nodeJS.<br>
 It is for showcasing my swift skill and backend understanding to land a first ios developer job.
 
-간단한 블로그 MVP 어플을 만들어 보았습니다. Backend 는 nodejs 로 구현했습니다. 이 프로젝트는 ios junior 개발자로써제가 가지고 있는  swift 스킬과 backend 이해를 보여주는 것입니다. 
+간단한 블로그 MVP 어플을 만들어 보았습니다. Backend 는 nodejs 로 구현했습니다. 이 프로젝트는 ios junior 개발자로써 제가 가지고 있는  swift 스킬과 backend 이해를 보여주는 것입니다. 
+
 
 ## Overall Functions (기본 기능들)
 
 1. Sign up (회원가입)
 2. Sign in (로그인)
 3. Create a post (포스트 생성하기)
-4. Read posts with pagenation (포스트  불러오기)
+4. Read posts (포스트  불러오기)
 5. Update a post (포스트 수정하기)
 6. Delete a post (포스트 삭제하기)
 
@@ -56,3 +57,6 @@ It is for showcasing my swift skill and backend understanding to land a first io
 
 This is a mvp app.
 Design and functions would be continuously updated.
+
+1. Pagenation is being developed.
+(페이지네이션 기능 구현중)

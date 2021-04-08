@@ -30,6 +30,7 @@ class PostTableViewController: UIViewController {
             switch result {
             case .success(let fetchedPosts):
                 self?.posts.append(contentsOf: fetchedPosts)
+                
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -65,6 +66,7 @@ class PostTableViewController: UIViewController {
     
     @objc func createNewPost() {
         print("createNewPost() called")
+        
         performSegue(withIdentifier: K.Segue.postTableSegue, sender: self)
     }
     
@@ -79,7 +81,7 @@ class PostTableViewController: UIViewController {
             switch result {
             case .success(let fetchedPosts):
                 self?.posts.append(contentsOf: fetchedPosts)
-                print("rerefreshHandler() -- count : ", self?.posts.count ?? 0)
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self?.tableView.reloadData()
                     self?.httpRequest.isPaginating = false
@@ -136,7 +138,6 @@ extension PostTableViewController: UITableViewDelegate {
 extension PostTableViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        print(position)
         
         if position > tableView.contentSize.height - scrollView.frame.size.height + 50 {
             guard !httpRequest.isPaginating else { return }
@@ -144,7 +145,6 @@ extension PostTableViewController: UIScrollViewDelegate {
             tableView.tableFooterView = createFooterView()
             
             httpRequest.postRequestWithPagination(with: K.EndPoint.posts, pagination: true) { [weak self] result in
-                print("currentPage : ", self?.httpRequest.currentPage ?? 0)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     
                     DispatchQueue.main.async {
@@ -154,7 +154,7 @@ extension PostTableViewController: UIScrollViewDelegate {
                     switch result {
                     case .success(let fetchedData):
                         self?.posts.append(contentsOf: fetchedData)
-                        print("postRequestWithPagination() -- count : ", self?.posts.count ?? 0)
+                        
                         DispatchQueue.main.async {
                             self?.tableView.reloadData()
                         }
