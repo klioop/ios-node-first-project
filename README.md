@@ -58,5 +58,3 @@ It is for showcasing my swift skill and backend understanding to land a first io
 This is a mvp app.
 Design and functions would be continuously updated.
 
-1. Pagenation is being developed.
-(페이지네이션 기능 구현중)

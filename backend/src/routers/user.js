@@ -68,8 +68,6 @@ router.post("/users/posts", auth, async (req, res) => {
 })
 
 router.post("/users/posts/:id", auth, async(req, res) => {
-    console.log(req.params);
-    console.log(req.body);
 
     try{
         const post = await Post.findOneAndUpdate(
