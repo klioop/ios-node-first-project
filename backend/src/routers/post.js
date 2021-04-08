@@ -8,11 +8,12 @@ router.post("/posts", async (req, res) => {
     const POST_ITEM_PER_PAGE = 20
 
     let page = req.body.page
+    console.log(req.body);
 
     try {
         const posts = await Post.find()
-        // .limit(POST_ITEM_PER_PAGE)
-        // .skip( POST_ITEM_PER_PAGE * page)
+        .limit(POST_ITEM_PER_PAGE)
+        .skip( POST_ITEM_PER_PAGE * page)
         .sort({
             createdAt: -1
         })
